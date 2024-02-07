@@ -1,4 +1,4 @@
-package io.github.myshkouski.plugin
+package io.github.myshkouski.plugin.gitlab.maven
 
 import org.gradle.api.artifacts.dsl.RepositoryHandler
 import org.gradle.api.artifacts.repositories.MavenArtifactRepository
@@ -31,53 +31,76 @@ fun RepositoryHandler.gitlabInstance(
 
 fun RepositoryHandler.gitlabProject(
     projectId: Int,
+    host: String = GITLAB_COM_HOST,
     action: MavenArtifactRepository.() -> Unit = {}
 ) : MavenArtifactRepository {
-    val url = gitlabProjectUrl(projectId)
-    val name = url.host.toSnakeCase() + "Project$projectId"
+    val url = gitlabProjectUrl(projectId, host)
+    val name = host.toSnakeCase() + "Project$projectId"
     return gitlab(name, url, action)
 }
 
 fun RepositoryHandler.gitlabProject(
     projectId: Int?,
+    host: String = GITLAB_COM_HOST,
     action: MavenArtifactRepository.() -> Unit = {}
 ) : MavenArtifactRepository? {
     projectId ?: return null
+    return gitlabProject(projectId, host, action)
+}
 
-    return gitlabProject(projectId, action)
+fun RepositoryHandler.gitlabProject(
+    projectId: String?,
+    host: String = GITLAB_COM_HOST,
+    action: MavenArtifactRepository.() -> Unit = {}
+) : MavenArtifactRepository? {
+    return gitlabProject(projectId?.toInt(), host, action)
 }
 
 fun RepositoryHandler.gitlabProject(
     vararg projectIds: Int,
+    host: String = GITLAB_COM_HOST,
     action: MavenArtifactRepository.() -> Unit = {}
 ) : Set<MavenArtifactRepository> {
     return projectIds.map {
-        gitlabProject(it, action)
+        gitlabProject(it, host, action)
     }.toSet()
 }
 
 fun RepositoryHandler.gitlabGroup(
     groupId: Int,
+    host: String = GITLAB_COM_HOST,
     action: MavenArtifactRepository.() -> Unit = {}
 ) : MavenArtifactRepository {
-    val url = gitlabGroupUrl(groupId)
+    val url = gitlabGroupUrl(groupId, host)
     val name = url.host.toSnakeCase() + "Group$groupId"
     return gitlab(name, url, action)
 }
 
 fun RepositoryHandler.gitlabGroup(
     groupId: Int?,
+    host: String = GITLAB_COM_HOST,
     action: MavenArtifactRepository.() -> Unit = {}
 ) : MavenArtifactRepository? {
     groupId ?: return null
-    return gitlabGroup(groupId, action)
+    return gitlabGroup(groupId, host, action)
 }
 
 fun RepositoryHandler.gitlabGroup(
     vararg groupIds: Int,
+    host: String = GITLAB_COM_HOST,
     action: MavenArtifactRepository.() -> Unit = {}
 ) : Set<MavenArtifactRepository> {
     return groupIds.map {
-        gitlabGroup(it, action)
+        gitlabGroup(it, host, action)
+    }.toSet()
+}
+
+fun RepositoryHandler.gitlabGroup(
+    vararg groupIds: String?,
+    host: String = GITLAB_COM_HOST,
+    action: MavenArtifactRepository.() -> Unit = {}
+) : Set<MavenArtifactRepository> {
+    return groupIds.mapNotNull {
+        gitlabGroup(it?.toInt(), host, action)
     }.toSet()
 }

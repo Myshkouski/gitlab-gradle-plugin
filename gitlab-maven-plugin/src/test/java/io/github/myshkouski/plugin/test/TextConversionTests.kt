@@ -1,7 +1,7 @@
 package io.github.myshkouski.plugin.test
 
-import io.github.myshkouski.plugin.toSlug
-import io.github.myshkouski.plugin.toSnakeCase
+import io.github.myshkouski.plugin.gitlab.maven.toSlug
+import io.github.myshkouski.plugin.gitlab.maven.toSnakeCase
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

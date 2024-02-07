@@ -6,10 +6,10 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 gradlePlugin {
-    plugins.create("gitlabMaven") {
-        configurePluginId("gitlab-maven")
-        implementationClass = "io.github.myshkouski.plugin.gitlab.maven.GitlabMavenPlugin"
-        displayName = "Plugin for using Gitlab Maven repository"
+    plugins.create("sonatype") {
+        configurePluginId(name)
+        implementationClass = "io.github.myshkouski.plugin.sonatype.SonatypePlugin"
+        displayName = "Plugin for using Sonatype repository"
         description = "A plugin that helps you using Gitlab Maven repository for dependency resolution and publishing."
         tags = listOf("maven", "gitlab", "dependencies", "publishing")
     }

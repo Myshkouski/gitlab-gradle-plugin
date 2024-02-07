@@ -1,4 +1,4 @@
-package io.github.myshkouski.plugin
+package io.github.myshkouski.plugin.gitlab.maven
 
 import org.gradle.api.Plugin
 
