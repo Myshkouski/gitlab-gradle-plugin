@@ -6,5 +6,6 @@ pluginManagement {
 
 rootProject.name = "gradle-conventions"
 
+include("conventions-plugin")
 include("gitlab-maven-plugin")
 include("sonatype-plugin")

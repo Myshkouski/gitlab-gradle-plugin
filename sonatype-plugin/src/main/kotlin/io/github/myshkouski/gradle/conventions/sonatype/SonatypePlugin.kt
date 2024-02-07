@@ -1,4 +1,4 @@
-package io.github.myshkouski.plugin.sonatype
+package io.github.myshkouski.gradle.conventions.sonatype
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

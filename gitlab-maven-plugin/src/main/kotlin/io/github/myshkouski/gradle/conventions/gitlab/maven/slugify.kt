@@ -1,4 +1,4 @@
-package io.github.myshkouski.plugin.gitlab.maven
+package io.github.myshkouski.gradle.conventions.gitlab.maven
 
 import java.text.Normalizer
 

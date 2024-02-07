@@ -1,4 +1,4 @@
-package io.github.myshkouski.plugin.gitlab.maven
+package io.github.myshkouski.gradle.conventions.gitlab.maven
 
 import org.gradle.api.artifacts.dsl.RepositoryHandler
 import org.gradle.api.artifacts.repositories.MavenArtifactRepository

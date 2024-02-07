@@ -3,7 +3,7 @@ allprojects {
 
     group = when {
         isJitpack -> System.getenv("GROUP").takeUnlessNullOrBlank()
-        else -> "io.github.myshkouski.gradle.conventions"
+        else -> "io.github.myshkouski.gradle-conventions"
     }
 
     version = when {
